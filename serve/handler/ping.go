@@ -6,10 +6,13 @@
 
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"user-go/version"
+)
 
 func Ping(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
-		"message": "pong",
+		"message": version.Version(),
 	})
 }

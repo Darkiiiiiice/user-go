@@ -14,18 +14,22 @@ OS=darwin
 ARCH=arm64
 
 
-build:
+
+build: clean
 	GOOS=${OS} GOARCH=${ARCH} go build -ldflags  \
         "                                        \
-        -X 'user-go/cmd.App=${APP}'        \
-        -X 'user-go/cmd.BuildTag=${BUILD_TAG}'        \
-        -X 'user-go/cmd.GoVersion=${GO_VERSION}'        \
-        -X 'user-go/cmd.BuildVersion=${BUILD_VERSION}'  \
-        -X 'user-go/cmd.BuildTime=${BUILD_TIME}'        \
-        -X 'user-go/cmd.CommitBranch=${COMMIT_BRANCH}'  \
-        -X 'user-go/cmd.CommitID=${COMMIT_SHA1}'        \
+        -X 'user-go/version.App=${APP}'        \
+        -X 'user-go/version.BuildTag=${BUILD_TAG}'        \
+        -X 'user-go/version.GoVersion=${GO_VERSION}'        \
+        -X 'user-go/version.BuildVersion=${BUILD_VERSION}'  \
+        -X 'user-go/version.BuildTime=${BUILD_TIME}'        \
+        -X 'user-go/version.CommitBranch=${COMMIT_BRANCH}'  \
+        -X 'user-go/version.CommitID=${COMMIT_SHA1}'        \
         "                                        \
     	-o ${TARGET_PATH}/${TARGET_NAME}
+
+run:
+	${TARGET_PATH}/${TARGET_NAME} version
 
 clean:
 	rm -r build/

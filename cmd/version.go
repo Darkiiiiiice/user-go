@@ -5,21 +5,10 @@ package cmd
 
 import (
 	"fmt"
+	"user-go/version"
 
 	"github.com/spf13/cobra"
 )
-
-var App string
-var GoVersion string
-var BuildVersion string
-var BuildTime string
-var BuildTag string
-var CommitBranch string
-var CommitID string
-
-func Version() string {
-	return fmt.Sprintf("App: %s\nGoVersion: %s\nBuildVersion: %s\nBudilTag: %s\nBuildTime: %s\nCommitBranch: %s\nCommitID: %s\n", App, GoVersion, BuildVersion, BuildTag, BuildTime, CommitBranch, CommitID)
-}
 
 // versionCmd represents the version command
 var versionCmd = &cobra.Command{
@@ -32,7 +21,7 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(Version())
+		fmt.Println(version.Version())
 	},
 }
 
